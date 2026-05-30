@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -105,15 +106,31 @@ public class SpringBoot4Application implements CommandLineRunner{
 		
 //		2//Pagination
 		
-		int pageNo=2;
+//		int pageNo=2;
+//		
+//		PageRequest of = PageRequest.of(pageNo - 1, 10);
+//		
+//		Page<Employee> all = employeeRepository.findAll(of);
+//		
+//		List<Employee> employees = all.getContent();
+//		
+//		employees.forEach(i->System.err.println(i));
 		
-		PageRequest of = PageRequest.of(pageNo - 1, 10);
 		
-		Page<Employee> all = employeeRepository.findAll(of);
 		
-		List<Employee> employees = all.getContent();
 		
-		employees.forEach(i->System.err.println(i));
+//		3//Filteration
+		
+		Employee e=new Employee();
+		e.setGender("Female");
+		
+		Example<Employee> of = Example.of(e);
+		
+		List<Employee> all = employeeRepository.findAll(of);
+		
+		all.forEach(i->System.err.println(i));
+		
+		
 		
 		
 		
