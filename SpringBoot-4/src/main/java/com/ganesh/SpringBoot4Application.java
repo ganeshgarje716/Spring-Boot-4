@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import com.ganesh.Repository.EmployeeRepository;
@@ -91,9 +93,28 @@ public class SpringBoot4Application implements CommandLineRunner{
 		
 		
 		
-		//Sorting
-		Sort sort = Sort.by("salary").descending();
-		employeeRepository.findAll(sort).forEach(i->System.err.println(i));
+		
+//		1//Sorting
+		
+//		Sort sort = Sort.by("name").descending();
+//		employeeRepository.findAll(sort).forEach(i->System.err.println(i));
+//		
+		
+		
+		
+		
+//		2//Pagination
+		
+		int pageNo=2;
+		
+		PageRequest of = PageRequest.of(pageNo - 1, 10);
+		
+		Page<Employee> all = employeeRepository.findAll(of);
+		
+		List<Employee> employees = all.getContent();
+		
+		employees.forEach(i->System.err.println(i));
+		
 		
 		
 	}
