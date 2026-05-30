@@ -91,7 +91,9 @@ public class SpringBoot4Application implements CommandLineRunner{
 		
 		
 		
-		
+		//Sorting
+		Sort sort = Sort.by("salary").descending();
+		employeeRepository.findAll(sort).forEach(i->System.err.println(i));
 		
 		
 	}
