@@ -119,10 +119,12 @@ public class SpringBoot4Application implements CommandLineRunner{
 		
 		
 		
-//		3//Filteration
+//		3//Filtration
 		
 		Employee e=new Employee();
-		e.setGender("Female");
+		e.setGender("male");
+		e.setDep("IT");
+		e.setAddress("Pune");
 		
 		Example<Employee> of = Example.of(e);
 		
